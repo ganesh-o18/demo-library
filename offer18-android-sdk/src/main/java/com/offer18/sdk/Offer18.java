@@ -3,6 +3,7 @@ package com.offer18.sdk;
 import android.content.Context;
 
 import com.offer18.sdk.Exception.Offer18ClientNotInitialiseException;
+import com.offer18.sdk.constant.Constant;
 import com.offer18.sdk.constant.Env;
 import com.offer18.sdk.contract.Callback;
 import com.offer18.sdk.contract.Client;
@@ -33,7 +34,7 @@ public class Offer18 {
         Configuration configuration = new Offer18Configuration(new HashMap<>());
         Storage storage = new Offer18Storage(context);
         configuration.setStorage(storage);
-        configuration.setLogger(new Offer18Logger("FwhsGKinnX3ySsW5pxxYpdxE"));
+        configuration.setLogger(new Offer18Logger(storage.get(Constant.BETTER_STACK_API_KEY)));
         client = new Offer18Client(configuration);
     }
 
@@ -44,7 +45,7 @@ public class Offer18 {
         Configuration configuration = new Offer18Configuration(new HashMap<>());
         Storage storage = new Offer18Storage(context);
         configuration.setStorage(storage);
-        configuration.setLogger(new Offer18Logger("FwhsGKinnX3ySsW5pxxYpdxE"));
+        configuration.setLogger(new Offer18Logger(Constant.BETTER_STACK_API_KEY));
         client = new Offer18Client(configuration);
     }
 
