@@ -1,7 +1,5 @@
 package com.offer18.sdk.worker;
 
-import android.util.Log;
-
 import com.offer18.sdk.Exception.Offer18FormFieldDataTypeException;
 import com.offer18.sdk.Exception.Offer18FormFieldRequiredException;
 import com.offer18.sdk.Exception.Offer18SSLVerifcationException;
@@ -12,7 +10,6 @@ import com.offer18.sdk.response.Offer18Response;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-
 
 import java.io.IOException;
 import java.util.Map;
@@ -53,7 +50,6 @@ public class TrackConversionWorker implements Runnable {
             this.remoteConfigDownloadSignal.await();
             HttpUrl url = this.buildEndpoint(args);
             Request request = new Request.Builder().url(url).build();
-            Log.println(Log.INFO, "o18", request.url().toString());
             if (this.configuration.isLoggingEnabled()) {
                 this.configuration.getLogger().log(request.url().toString());
             }
@@ -62,7 +58,6 @@ public class TrackConversionWorker implements Runnable {
             if (!Objects.isNull(this.callback)) {
                 this.callback.onSuccess(new Offer18Response(true, url.toString()));
             }
-            Log.d("o18", response.toString());
             if (this.configuration.isLoggingEnabled()) {
                 this.configuration.getLogger().log(response.toString());
             }
@@ -82,7 +77,6 @@ public class TrackConversionWorker implements Runnable {
                 .host("ganesh-local-dev.o18-test.live")
                 .addPathSegments("tracking/p.php");
         String doesSSLVerificationRequire = this.configuration.get(Constant.HTTP_SSL_VERIFICATION);
-        Log.d("o18", "ssl-ver " + doesSSLVerificationRequire);
         if (this.configuration.isLoggingEnabled()) {
             this.configuration.getLogger().log(doesSSLVerificationRequire);
         }
@@ -101,7 +95,6 @@ public class TrackConversionWorker implements Runnable {
                 String formName = this.configuration.get(Constant.CONVERSION_FIELDS_PREFIX + "." + key + "." + Constant.CONVERSION_FIELDS_PREFIX_FORM_NAME);
                 String required = this.configuration.get(Constant.CONVERSION_FIELDS_PREFIX + "." + key + "." + Constant.CONVERSION_FIELDS_PREFIX_REQUIRED);
                 String dataType = this.configuration.get(Constant.CONVERSION_FIELDS_PREFIX + "." + key + "." + Constant.CONVERSION_FIELDS_PREFIX_DATA_TYPE);
-                Log.d("o18", "key: " + key + " form-name: " + formName + " req: " + required + " data_type: " + dataType);
                 if (this.configuration.isLoggingEnabled()) {
                     this.configuration.getLogger().log("key: " + key + " form-name: " + formName + " req: " + required + " data_type: " + dataType);
                 }
@@ -115,7 +108,6 @@ public class TrackConversionWorker implements Runnable {
                         try {
                             Float.parseFloat(Objects.requireNonNull(args.get(key)));
                         } catch (NumberFormatException | NullPointerException e) {
-                            Log.d("o18", key + " must be a number");
                             if (this.configuration.isLoggingEnabled()) {
                                 this.configuration.getLogger().log(key + " must be a number");
                             }
@@ -126,7 +118,6 @@ public class TrackConversionWorker implements Runnable {
                 url.addQueryParameter(formName, args.get(key));
             }
         } catch (JSONException e) {
-            Log.d("o18", "conversion params are not found");
             if (this.configuration.isLoggingEnabled()) {
                 this.configuration.getLogger().log("conversion params are not found");
             }

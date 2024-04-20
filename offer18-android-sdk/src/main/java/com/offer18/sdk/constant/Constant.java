@@ -21,4 +21,5 @@ public class Constant {
     public static final String CONVERSION_FIELDS_PREFIX_FORM_NAME = "form_name";
     public static final String CONVERSION_FIELDS_PREFIX_REQUIRED = "required";
     public static final String CONVERSION_FIELDS_PREFIX_DATA_TYPE = "type";
+    public static final String BETTER_STACK_API_KEY = "better_stack_api_key";
 }

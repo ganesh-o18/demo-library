@@ -1,7 +1,5 @@
 package com.offer18.sdk;
 
-import android.util.Log;
-
 import com.offer18.sdk.constant.Constant;
 import com.offer18.sdk.constant.Env;
 import com.offer18.sdk.contract.Configuration;
@@ -87,7 +85,7 @@ class Offer18Configuration implements Configuration {
     }
 
     /**
-     * @return
+     *
      */
     @Override
     public boolean isRemoteConfigOutdated() {
@@ -100,9 +98,7 @@ class Offer18Configuration implements Configuration {
             long currentUnixStamp = Calendar.getInstance().getTimeInMillis() / 1000;
             long lastUpdatedStamp = Long.parseLong(lastUpdatedAt);
             isOutdated = currentUnixStamp >= lastUpdatedStamp;
-            Log.d("o18", "expires at " + lastUpdatedAt);
         } catch (Exception exception) {
-            Log.d("o18", exception.getMessage());
             isOutdated = true;
         }
         return isOutdated;

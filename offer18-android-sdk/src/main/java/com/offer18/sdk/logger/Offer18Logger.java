@@ -30,7 +30,6 @@ public class Offer18Logger implements Logger {
     }
 
     /**
-     * @param info
      */
     @Override
     public void log(String info) {
