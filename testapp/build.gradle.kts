@@ -30,7 +30,6 @@ android {
 }
 
 dependencies {
-
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
     implementation(project(":offer18-android-sdk"))
@@ -38,13 +37,4 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-}
-
-tasks.register<Zip>("generateRepo") {
-    val publishTask = tasks.named(
-            "publishReleasePublicationToMyrepoRepository",
-            PublishToMavenRepository::class.java)
-    from(publishTask.map { it.repository.url })
-    into("mylibrary")
-    archiveFileName.set("mylibrary.zip")
 }
