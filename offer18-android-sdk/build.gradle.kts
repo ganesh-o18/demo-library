@@ -34,14 +34,10 @@ android {
 }
 
 mavenPublishing {
-    coordinates("io.github.ganesh-o18", "mylibrary-runtime", "1.0.0")
-//    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.DEFAULT)
-    // or when publishing to https://s01.oss.sonatype.org
-//    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
-    // or when publishing to https://central.sonatype.com/
+    coordinates("io.github.ganesh-o18", "android-sdk", "1.0.3")
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     pom {
-        name.set("My Library")
+        name.set("android-sdk")
         description.set("A description of what my library does.")
         inceptionYear.set("2020")
         url.set("https://github.com/username/mylibrary/")
@@ -54,10 +50,15 @@ mavenPublishing {
         }
         developers {
             developer {
-                id.set("username")
-                name.set("User Name")
-                url.set("https://github.com/username/")
+                id.set("offer18")
+                name.set("offer18")
+                url.set("https://offer18.com")
             }
+        }
+        scm {
+            url.set("https://github.com/offer-18/android-sdk")
+            connection.set("scm:git:git://github.com/username/mylibrary.git")
+            developerConnection.set("scm:git:ssh://git@github.com/username/mylibrary.git")
         }
     }
     signAllPublications()
