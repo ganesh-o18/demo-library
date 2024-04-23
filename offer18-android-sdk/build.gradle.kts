@@ -1,9 +1,7 @@
 plugins {
     id("com.android.library")
-    id("maven-publish")
+    id("com.vanniktech.maven.publish") version "0.28.0"
 }
-
-
 
 android {
     namespace = "com.offer18.sdk"
@@ -23,53 +21,46 @@ android {
         release {
             isMinifyEnabled = true
             isJniDebuggable = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
+            )
         }
-
         debug {
             isMinifyEnabled = false
             isJniDebuggable = true
         }
     }
-
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("release") {
-            pom {
-                name = "My Library"
-                description = "A concise description of my library"
-                url = "http://www.example.com/library"
-                properties = mapOf(
-                        "myProp" to "value",
-                        "prop.with.dots" to "anotherValue"
-                )
-                licenses {
-                    license {
-                        name = "The Apache License, Version 2.0"
-                        url = "http://www.apache.org/licenses/LICENSE-2.0.txt"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "johnd"
-                        name = "John Doe"
-                        email = "john.doe@example.com"
-                    }
-                }
-                scm {
-                    connection = "scm:git:git://example.com/my-library.git"
-                    developerConnection = "scm:git:ssh://example.com/my-library.git"
-                    url = "http://example.com/my-library/"
-                }
+mavenPublishing {
+    coordinates("io.github.ganesh-o18", "mylibrary-runtime", "1.0.0")
+//    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.DEFAULT)
+    // or when publishing to https://s01.oss.sonatype.org
+//    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.S01)
+    // or when publishing to https://central.sonatype.com/
+    publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
+    pom {
+        name.set("My Library")
+        description.set("A description of what my library does.")
+        inceptionYear.set("2020")
+        url.set("https://github.com/username/mylibrary/")
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+        developers {
+            developer {
+                id.set("username")
+                name.set("User Name")
+                url.set("https://github.com/username/")
             }
         }
     }
+    signAllPublications()
 }
 
 dependencies {
