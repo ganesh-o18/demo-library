@@ -9,7 +9,8 @@ import android.content.Context;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.offer18.sdk.Exception.Offer18ClientNotInitialiseException;
+import com.offer18.sdk.contract.CredentialManager;
+import com.offer18.sdk.exception.Offer18ClientNotInitialiseException;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ public class Offer18ClientInstrumentedTest {
     @Test
     public void sdk_does_throw_exception_when_context_is_not_provided() {
         try {
-            Offer18.init(null);
+            Offer18.init(null, "", "");
         } catch (Exception e) {
             assertTrue(e instanceof Exception);
         }
@@ -40,15 +41,25 @@ public class Offer18ClientInstrumentedTest {
     public void sdk_does_not_throw_exception_when_context_is_provide() throws Exception {
         Instrumentation instrumentationRegistry = InstrumentationRegistry.getInstrumentation();
         Context context = instrumentationRegistry.getContext();
-        Offer18.init(context);
+        Offer18.init(context, "", "");
     }
 
     @Test
     public void sdk_default_config_for_http_time_out_is_2000() throws Exception {
         Instrumentation instrumentationRegistry = InstrumentationRegistry.getInstrumentation();
         Context context = instrumentationRegistry.getContext();
-        Offer18.init(context);
-        Offer18Configuration configuration = new Offer18Configuration(new HashMap<>());
+        Offer18.init(context, "", "");
+        Offer18Configuration configuration = new Offer18Configuration(new CredentialManager() {
+            @Override
+            public String getApiKey() {
+                return null;
+            }
+
+            @Override
+            public String getApiSecret() {
+                return null;
+            }
+        });
         configuration.setStorage(new Offer18Storage(context));
         assertEquals(2000, configuration.getHttpDefaultTimeout());
     }
@@ -57,8 +68,18 @@ public class Offer18ClientInstrumentedTest {
     public void sdk_configuration_can_retrieve_what_was_set_before() throws Exception {
         Instrumentation instrumentationRegistry = InstrumentationRegistry.getInstrumentation();
         Context context = instrumentationRegistry.getContext();
-        Offer18.init(context);
-        Offer18Configuration configuration = new Offer18Configuration(new HashMap<>());
+        Offer18.init(context, "", "");
+        Offer18Configuration configuration = new Offer18Configuration(new CredentialManager() {
+            @Override
+            public String getApiKey() {
+                return null;
+            }
+
+            @Override
+            public String getApiSecret() {
+                return null;
+            }
+        });
         configuration.setStorage(new Offer18Storage(context));
         configuration.set("hello", "world");
         assertEquals("world", configuration.get("hello"));
@@ -68,8 +89,18 @@ public class Offer18ClientInstrumentedTest {
     public void sdk_configuration_cannot_retrieve_what_was_deleted() throws Exception {
         Instrumentation instrumentationRegistry = InstrumentationRegistry.getInstrumentation();
         Context context = instrumentationRegistry.getContext();
-        Offer18.init(context);
-        Offer18Configuration configuration = new Offer18Configuration(new HashMap<>());
+        Offer18.init(context, "", "");
+        Offer18Configuration configuration = new Offer18Configuration(new CredentialManager() {
+            @Override
+            public String getApiKey() {
+                return null;
+            }
+
+            @Override
+            public String getApiSecret() {
+                return null;
+            }
+        });
         configuration.setStorage(new Offer18Storage(context));
         configuration.set("hello", "world");
         configuration.remove("hello");

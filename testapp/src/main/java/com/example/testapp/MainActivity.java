@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         trackConversionBtn.setOnClickListener(v -> {
             try {
                 HashMap<String, String> args = new HashMap<String, String>();
-                Offer18.init(getBaseContext());
+                Offer18.init(getBaseContext(), "", "");
                 args.put("domain", domain.getText().toString());
                 args.put("offer_id", offerId.getText().toString());
                 args.put("account_id", accountId.getText().toString());

@@ -2,16 +2,17 @@ package com.offer18.sdk;
 
 import android.content.Context;
 
-import com.offer18.sdk.Exception.Offer18ClientNotInitialiseException;
+import com.offer18.sdk.exception.Offer18ClientNotInitialiseException;
+import com.offer18.sdk.exception.Offer18InvalidCredentialException;
 import com.offer18.sdk.constant.Constant;
 import com.offer18.sdk.constant.Env;
 import com.offer18.sdk.contract.Callback;
 import com.offer18.sdk.contract.Client;
 import com.offer18.sdk.contract.Configuration;
+import com.offer18.sdk.contract.CredentialManager;
 import com.offer18.sdk.contract.Storage;
 import com.offer18.sdk.logger.Offer18Logger;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
@@ -27,25 +28,12 @@ public class Offer18 {
     /**
      * Init SDK
      */
-    public static void init(Context context, Map<String, String> credentials) throws Exception {
-        if (Objects.isNull(context)) {
-            throw new Exception("Context is required");
-        }
-        Configuration configuration = new Offer18Configuration(new HashMap<>());
+    public static void init(Context context, String apiKey, String apiSecret) throws Offer18InvalidCredentialException {
+        CredentialManager credentialManager = new Offer18CredentialManager(apiKey, apiSecret);
+        Configuration configuration = new Offer18Configuration(credentialManager);
         Storage storage = new Offer18Storage(context);
         configuration.setStorage(storage);
         configuration.setLogger(new Offer18Logger(storage.get(Constant.BETTER_STACK_API_KEY)));
-        client = new Offer18Client(configuration);
-    }
-
-    public static void init(Context context) throws Exception {
-        if (Objects.isNull(context)) {
-            throw new Exception("Context is required");
-        }
-        Configuration configuration = new Offer18Configuration(new HashMap<>());
-        Storage storage = new Offer18Storage(context);
-        configuration.setStorage(storage);
-        configuration.setLogger(new Offer18Logger(Constant.BETTER_STACK_API_KEY));
         client = new Offer18Client(configuration);
     }
 
@@ -54,7 +42,7 @@ public class Offer18 {
      */
     public static void trackConversion(Map<String, String> args) throws Exception {
         if (Objects.isNull(client)) {
-            throw new Offer18ClientNotInitialiseException("Client is not initialised");
+            throw new Offer18ClientNotInitialiseException();
         }
         client.trackConversion(args, configuration);
     }
@@ -64,7 +52,7 @@ public class Offer18 {
      */
     public static void trackConversion(Map<String, String> args, Callback callback) throws Exception {
         if (Objects.isNull(client)) {
-            throw new Offer18ClientNotInitialiseException("Client is not initialised");
+            throw new Offer18ClientNotInitialiseException();
         }
         client.trackConversion(args, configuration, callback);
     }

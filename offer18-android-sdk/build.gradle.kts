@@ -19,7 +19,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = true
+            isMinifyEnabled = false
             isJniDebuggable = false
             proguardFiles(
                     getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -34,13 +34,13 @@ android {
 }
 
 mavenPublishing {
-    coordinates("io.github.ganesh-o18", "android-sdk", "1.0.3")
+    coordinates("com.offer18", "android-sdk", "1.0.4")
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     pom {
         name.set("android-sdk")
-        description.set("A description of what my library does.")
-        inceptionYear.set("2020")
-        url.set("https://github.com/username/mylibrary/")
+        description.set("Offer18 Android SDK")
+        inceptionYear.set("2024")
+        url.set("https://gitlab.com/offer18/offer18-androids-sdk")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
@@ -56,9 +56,9 @@ mavenPublishing {
             }
         }
         scm {
-            url.set("https://github.com/offer-18/android-sdk")
-            connection.set("scm:git:git://github.com/username/mylibrary.git")
-            developerConnection.set("scm:git:ssh://git@github.com/username/mylibrary.git")
+            url.set("https://gitlab.com/offer18/offer18-androids-sdk")
+            connection.set("scm:git:git://gitlab.com/offer18/offer18-androids-sdk")
+            developerConnection.set("scm:git:ssh://gitlab.com/offer18/offer18-androids-sdk.git")
         }
     }
     signAllPublications()

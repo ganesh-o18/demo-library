@@ -8,7 +8,6 @@ import com.offer18.sdk.contract.Logger;
 import com.offer18.sdk.contract.Storage;
 
 import java.util.Calendar;
-import java.util.Map;
 import java.util.Objects;
 
 class Offer18Configuration implements Configuration {
@@ -17,12 +16,8 @@ class Offer18Configuration implements Configuration {
     protected Storage storage;
     protected Logger logger;
 
-    public Offer18Configuration(CredentialManager credentialManager, Map<String, String> config) {
+    public Offer18Configuration(CredentialManager credentialManager) {
         this.credentialManager = credentialManager;
-    }
-
-    public Offer18Configuration(Map<String, String> config) {
-
     }
 
     @Override

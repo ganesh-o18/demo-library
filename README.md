@@ -7,7 +7,7 @@
 
 _Required - Java 1.8, Android API level 16_
 #### Dependency
-Offer18 Android SDK has single dependency on OkHttp {version} library for http requests.
+Offer18 Android SDK has single dependency on OkHttp 4.12.0 library for http requests.
 
 #### Permission
 Make sure your app has permission -

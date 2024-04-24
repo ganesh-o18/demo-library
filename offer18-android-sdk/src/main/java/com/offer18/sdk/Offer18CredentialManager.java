@@ -1,35 +1,23 @@
 package com.offer18.sdk;
 
-import com.offer18.sdk.Exception.Offer18InvalidCredentialException;
+import com.offer18.sdk.exception.Offer18InvalidCredentialException;
 import com.offer18.sdk.contract.CredentialManager;
-
-import java.util.Map;
 
 public class Offer18CredentialManager implements CredentialManager {
     private String apiKey;
     private String apiSecret;
 
-    public Offer18CredentialManager() {
-    }
-
-    public Offer18CredentialManager(String apiKey, String apiSecret) {
-        this.apiKey = apiKey;
-        this.apiSecret = apiSecret;
-    }
-
-    public Offer18CredentialManager(Map<String, String> credentials) throws Offer18InvalidCredentialException {
-        String apiKey = credentials.get("api-key");
-        String apiSecret = credentials.get("api-secret");
+    public Offer18CredentialManager(String apiKey, String apiSecret) throws Offer18InvalidCredentialException {
         if ((apiKey == null || apiKey.isEmpty()) && (apiSecret == null || apiSecret.isEmpty())) {
-            throw new Offer18InvalidCredentialException("There is no api key and secret key in provided credentials");
+            throw new Offer18InvalidCredentialException();
         }
         if (apiKey == null || apiKey.isEmpty()) {
-            throw new Offer18InvalidCredentialException("There is no api key in provided credentials");
+            throw new Offer18InvalidCredentialException();
         }
         if (apiSecret == null || apiSecret.isEmpty()) {
-            throw new Offer18InvalidCredentialException("There is no api secret in provided credentials");
+            throw new Offer18InvalidCredentialException();
         }
-       this.setApiKey(apiKey);
+        this.setApiKey(apiKey);
         this.setApiSecret(apiSecret);
     }
 
