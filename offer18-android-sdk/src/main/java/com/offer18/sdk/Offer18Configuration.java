@@ -31,13 +31,13 @@ class Offer18Configuration implements Configuration {
     }
 
     @Override
-    public String getApiKey() {
-        return this.credentialManager.getApiKey();
+    public String getDomain() {
+        return this.credentialManager.getDomain();
     }
 
     @Override
-    public String getApiSecret() {
-        return this.credentialManager.getApiSecret();
+    public String getAccountID() {
+        return this.credentialManager.getAccountID();
     }
 
     @Override

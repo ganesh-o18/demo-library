@@ -7,9 +7,9 @@ public interface Configuration {
 
     Env getEnv();
 
-    String getApiKey();
+    String getDomain();
 
-    String getApiSecret();
+    String getAccountID();
 
     Storage getStorage();
 

@@ -4,38 +4,38 @@ import com.offer18.sdk.exception.Offer18InvalidCredentialException;
 import com.offer18.sdk.contract.CredentialManager;
 
 public class Offer18CredentialManager implements CredentialManager {
-    private String apiKey;
-    private String apiSecret;
+    private String domain;
+    private String accountID;
 
-    public Offer18CredentialManager(String apiKey, String apiSecret) throws Offer18InvalidCredentialException {
-        if ((apiKey == null || apiKey.isEmpty()) && (apiSecret == null || apiSecret.isEmpty())) {
+    public Offer18CredentialManager(String domain, String accountID) throws Offer18InvalidCredentialException {
+        if ((domain == null || domain.isEmpty()) && (accountID == null || accountID.isEmpty())) {
             throw new Offer18InvalidCredentialException();
         }
-        if (apiKey == null || apiKey.isEmpty()) {
+        if (domain == null || domain.isEmpty()) {
             throw new Offer18InvalidCredentialException();
         }
-        if (apiSecret == null || apiSecret.isEmpty()) {
+        if (accountID == null || accountID.isEmpty()) {
             throw new Offer18InvalidCredentialException();
         }
-        this.setApiKey(apiKey);
-        this.setApiSecret(apiSecret);
+        this.setDomain(domain);
+        this.setAccountID(accountID);
     }
 
     @Override
-    public String getApiKey() {
-        return this.apiKey;
+    public String getDomain() {
+        return this.domain;
     }
 
     @Override
-    public String getApiSecret() {
-        return this.apiSecret;
+    public String getAccountID() {
+        return this.accountID;
     }
 
-    public void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
+    public void setDomain(String domain) {
+        this.domain = domain;
     }
 
-    public void setApiSecret(String apiSecret) {
-        this.apiSecret = apiSecret;
+    public void setAccountID(String accountID) {
+        this.accountID = accountID;
     }
 }

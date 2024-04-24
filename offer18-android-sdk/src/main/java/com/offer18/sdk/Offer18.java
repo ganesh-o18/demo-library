@@ -28,8 +28,8 @@ public class Offer18 {
     /**
      * Init SDK
      */
-    public static void init(Context context, String apiKey, String apiSecret) throws Offer18InvalidCredentialException {
-        CredentialManager credentialManager = new Offer18CredentialManager(apiKey, apiSecret);
+    public static void init(Context context, String domain, String accountID) throws Offer18InvalidCredentialException {
+        CredentialManager credentialManager = new Offer18CredentialManager(domain, accountID);
         Configuration configuration = new Offer18Configuration(credentialManager);
         Storage storage = new Offer18Storage(context);
         configuration.setStorage(storage);

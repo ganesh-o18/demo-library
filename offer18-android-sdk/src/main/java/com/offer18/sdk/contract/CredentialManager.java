@@ -1,7 +1,7 @@
 package com.offer18.sdk.contract;
 
 public interface CredentialManager {
-    String getApiKey();
+    String getDomain();
 
-    String getApiSecret();
+    String getAccountID();
 }
