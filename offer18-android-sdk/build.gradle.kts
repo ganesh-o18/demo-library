@@ -34,7 +34,7 @@ android {
 }
 
 mavenPublishing {
-    coordinates("com.offer18", "android-sdk", "1.0.4")
+    coordinates("io.github.ganesh-o18", "android-sdk", "1.0.4")
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     pom {
         name.set("android-sdk")
