@@ -1,16 +1,13 @@
 name: Publish
 on:
-  workflow_dispatch:
-    inputs:
-      versionName:
-        description: 'Version Name'
-        required: true
+  push:
+    branches:
+      - master
 
 jobs:
-  publish:
-    name: Publish
+  if-merged:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
