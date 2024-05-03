@@ -40,7 +40,7 @@ mavenPublishing {
         name.set("test-library")
         description.set("Test Library")
         inceptionYear.set("2024")
-        url.set("https://gitlab.com/offer18/offer18-androids-sdk")
+        url.set("https://gitlab.com/ganesh-o18/demo-library")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
