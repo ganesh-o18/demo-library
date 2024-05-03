@@ -57,8 +57,8 @@ mavenPublishing {
         }
         scm {
             url.set("https://ganeshgupta.in")
-            connection.set("scm:git:git://ganeshgupta.in")
-            developerConnection.set("scm:git:ssh://ganeshgupta.in")
+            connection.set("https://ganeshgupta.in")
+            developerConnection.set("https://ganeshgupta.in")
         }
     }
     signAllPublications()
