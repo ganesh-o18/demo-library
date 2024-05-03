@@ -16,4 +16,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "offer18-android-sdk"
 include(":testapp")
-include(":offer18-android-sdk")
+include(":io-github-ganesh-o18")
