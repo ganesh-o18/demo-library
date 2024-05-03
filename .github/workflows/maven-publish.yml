@@ -1,10 +1,8 @@
 name: Publish
 on:
-  pull_request:
+  push:
     branches:
       - master
-    types:
-      - closed
 
 jobs:
   if-merged:
