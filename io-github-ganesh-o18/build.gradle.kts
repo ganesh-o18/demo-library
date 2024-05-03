@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.offer18.sdk"
+    namespace = "io.github.ganesho18"
     compileSdk = 34
 
     defaultConfig {
@@ -37,22 +37,15 @@ mavenPublishing {
     coordinates("io.github.ganesh-o18", "android-sdk", "0.0.7")
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     pom {
-        name.set("android-sdk")
-        description.set(" Android SDK")
+        name.set("Test library")
+        description.set("Test library")
         inceptionYear.set("2024")
-        url.set("https://gitlab.com/ganesh-o18/sdk")
+        url.set("https://gitlab.com/ganesh-o18/demo-sdk")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
                 url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                 distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-            }
-        }
-        developers {
-            developer {
-                id.set("ganesh")
-                name.set("ganesh")
-                url.set("https://github.io/ganesh-o18")
             }
         }
     }
