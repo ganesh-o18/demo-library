@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "io.github.ganesho18"
+    namespace = "com.offer18.sdk"
     compileSdk = 34
 
     defaultConfig {
@@ -22,8 +22,8 @@ android {
             isMinifyEnabled = false
             isJniDebuggable = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
+                    "proguard-rules.pro"
             )
         }
         debug {
@@ -37,16 +37,28 @@ mavenPublishing {
     coordinates("io.github.ganesh-o18", "android-sdk", "0.0.7")
     publishToMavenCentral(com.vanniktech.maven.publish.SonatypeHost.CENTRAL_PORTAL)
     pom {
-        name.set("Test library")
-        description.set("Test library")
+        name.set("test-library")
+        description.set("Test Library")
         inceptionYear.set("2024")
-        url.set("https://gitlab.com/ganesh-o18/demo-sdk")
+        url.set("https://gitlab.com/offer18/offer18-androids-sdk")
         licenses {
             license {
                 name.set("The Apache License, Version 2.0")
                 url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
                 distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
             }
+        }
+        developers {
+            developer {
+                id.set("ganesh-o18")
+                name.set("ganesh")
+                url.set("https://github.com/ganesh-o18")
+            }
+        }
+        scm {
+            url.set("https://ganeshgupta.in")
+            connection.set("scm:git:git://ganeshgupta.in")
+            developerConnection.set("scm:git:ssh://ganeshgupta.in")
         }
     }
     signAllPublications()
